@@ -16,7 +16,7 @@ const FileUploadForm = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://munayki.cidtec-uc.com/examplenode/upload", {
+      const response = await fetch("http://localhost:3000/upload", {
         method: "POST",
         body: formData,
       });

@@ -9,16 +9,17 @@ const PORT = 3000;
 app.use(cors());
 
 
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, "uploads"));
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + path.extname(file.originalname));
+    },
+  });
+  
 const upload = multer({ storage: storage });
 
 app.post("/upload", upload.single("file"), (req, res) => {
