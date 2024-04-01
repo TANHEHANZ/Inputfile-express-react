@@ -16,7 +16,7 @@ const FileUploadForm = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://inputfile-express-react.vercel.app/upload", {
+      const response = await fetch("https://munayki.cidtec-uc.com/examplenode/upload", {
         method: "POST",
         body: formData,
       });

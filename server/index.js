@@ -1,23 +1,16 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+var cors = require("cors");
 
 const app = express();
 const PORT = 3000;
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173"); // Reemplaza con la URL de tu aplicación React
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
-app.use('/uploads', express.static('uploads'));
+
+app.use(cors());
+
+
+app.use("/uploads", express.static("uploads"));
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
