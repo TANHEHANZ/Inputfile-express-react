@@ -16,7 +16,7 @@ const FileUploadForm = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:3000/upload", {
+      const response = await fetch("https://inputfile-express-react.vercel.app/upload", {
         method: "POST",
         body: formData,
       });
