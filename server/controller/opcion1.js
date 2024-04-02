@@ -26,8 +26,14 @@ function saveimage(file) {
   const fileExtension = path.extname(file.originalname);
   const newPath = `${file.filename}${fileExtension}`;
   const tempFilePath = file.path;
-  const destinationPath = path.join(__dirname, "uploads1", newPath);
+  const destinationPath = path.join("/tmp", newPath); // Mueve el archivo a un directorio temporal dentro de /tmp
+
+  // Mover el archivo temporal al directorio temporal
   fs.renameSync(tempFilePath, destinationPath);
+
+  // Luego, mueve el archivo desde el directorio temporal al directorio de destino final
+  fs.renameSync(destinationPath, path.join(__dirname, "controller", "uploads1", newPath));
+  
   console.log(newPath);
   return newPath;
 }
