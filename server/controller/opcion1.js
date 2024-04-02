@@ -4,7 +4,9 @@ const path = require("path");
 const fs = require("node:fs");
 const app = express();
 
-const upload = multer({ dest: "controller/uploads1/" });
+// const upload = multer({ dest: "controller/uploads1/" });
+const upload = multer({ dest: "/tmp/" });
+
 app.use(
   "/uploads1",
   express.static(path.join(__dirname, "controller", "uploads1"))
