@@ -25,7 +25,11 @@ app.post("/upload1", upload.single("file"), (req, res) => {
 function saveimage(file) {
   const fileExtension = path.extname(file.originalname);
   const newPath = `${file.filename}${fileExtension}`;
-  fs.renameSync(file.path, `controller/uploads1/${newPath}`);
+  const destinationPath = `controller/uploads1/`;
+  if (!fs.existsSync(destinationPath)) {
+    fs.mkdirSync(destinationPath, { recursive: true });
+  }
+  fs.renameSync(file.path, `${destinationPath}/${newPath}`);
   console.log(newPath);
   return newPath;
 }
