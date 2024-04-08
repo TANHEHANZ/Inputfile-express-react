@@ -16,7 +16,7 @@ const FileUploadForm = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://inputfile-express-react.vercel.app/upload1", {
+      const response = await fetch("https://munayki.cidtec-uc.com/upload", {
         method: "POST",
         body: formData,
       });
@@ -27,8 +27,8 @@ const FileUploadForm = () => {
 
       const data = await response.json();
       setMessage(data.message);
-      setImagen(data.url);
-      console.log(data.url);
+      setImagen(data.imageUrl);
+      console.log(data.imageUrl);
     } catch (error) {
       console.error("Error uploading file: ", error);
       setMessage("Error uploading file");
