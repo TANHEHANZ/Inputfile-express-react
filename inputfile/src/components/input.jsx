@@ -1,13 +1,26 @@
-import React from 'react'
+import React from "react";
 
-const Input = ({valores}) => {
-    console.log(valores)
+const Input = ({ valores, onChange }) => {
   return (
-    <div>
-      <label htmlFor={valores.label}>{valores.label}</label>
-      <input type={valores.type} name={valores.name} id={valores.id} />
-    </div>
-  )
-}
+    <>
+      {valores.map(({ label, type, id }, i) => (
+        <div key={i}>
+          <label htmlFor={label}>{label}</label>
+          <input
+            type={type}
+            name={label}
+            id={id}
+            onChange={(e) =>
+              onChange(
+                label,
+                type === file ? e.target.value[0] : e.target.value
+              )
+            }
+          />
+        </div>
+      ))}
+    </>
+  );
+};
 
-export default Input
+export default Input;

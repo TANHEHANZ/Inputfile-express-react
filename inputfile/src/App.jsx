@@ -1,9 +1,5 @@
-import React, { Children, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React from "react";
 import "./App.css";
-import FileUploadForm from "./Formfile";
-import Input from "./components/input";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { data } from "./data/routes";
 import Inicio from "./pages/inicio";
